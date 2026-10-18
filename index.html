@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#112c46">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lira Pocket">
+<meta name="description" content="Offline-capable Turkish lira to British pounds shopping converter">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="./icon.svg">
+<title>Lira Pocket — Turkish Lira to Pounds</title>
+<style>
+:root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:16px;--navy:#112c46;--teal:#087e76;--bg:#f2f6f6;--muted:#637580;--line:#dfebeb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#172d3c}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:default}
+main{max-width:590px;margin:auto;padding:18px 17px 70px}.brand{display:flex;align-items:center;gap:12px;margin:4px 0 22px}.logo{height:48px;width:48px;display:grid;place-items:center;border-radius:15px;background:var(--navy);color:#fff;font-size:25px;font-weight:800;letter-spacing:-4px;padding-right:4px}.logo span{color:#6fdfc0}.brand strong{font-size:21px;letter-spacing:-.5px}.brand small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.network{margin-left:auto;border-radius:20px;background:#d9f3e7;color:#126044;font-size:12px;font-weight:700;padding:7px 10px;white-space:nowrap}.network.offline{background:#fff0d9;color:#875400}
+.rate{background:linear-gradient(128deg,#102b45,#164a60);color:#fff;border-radius:22px;padding:23px;box-shadow:0 12px 28px rgba(13,47,64,.14)}.rate-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;letter-spacing:.08em}.rate-top span:last-child{color:#a9edd8;letter-spacing:0;font-weight:700}.big-rate{font-size:32px;font-weight:850;letter-spacing:-1.2px;margin:19px 0 7px;font-variant-numeric:tabular-nums}.inverse{margin:0;color:#c4d9e2;font-size:15px}.rate-bottom{display:flex;gap:8px;align-items:center;justify-content:space-between;border-top:1px solid #ffffff2b;padding-top:17px;margin-top:20px}.rate-note{font-size:12px;line-height:1.4;color:#c5dee5}.refresh{background:#ffffff20;color:#fff;border:1px solid #ffffff58;border-radius:12px;padding:9px 13px;font-size:13px;font-weight:700}
+.panel{background:#fff;margin-top:18px;border-radius:20px;padding:21px;box-shadow:0 5px 18px rgba(19,53,65,.04)}h1,h2{font-size:20px;letter-spacing:-.5px;margin:0 0 5px}section p.sub{color:var(--muted);font-size:13px;margin:0 0 20px}.tag{background:#e8f7f4;color:#087e76;border-radius:20px;font-size:11px;font-weight:800;padding:7px 10px}.head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}label{display:block;font-size:13px;font-weight:700;margin:16px 0 7px}label small{font-weight:400;color:#758592}input{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:13px 13px;color:#122b3c;background:#fbfdfd;outline:none;min-width:0}input:focus{border-color:#0b9084;box-shadow:0 0 0 3px #0b908423}.two{display:grid;grid-template-columns:minmax(0,2fr) minmax(90px,1fr);gap:12px}.prefix{position:relative}.prefix input{padding-left:34px}.prefix>span{position:absolute;left:12px;top:13px;color:#6a828b;font-weight:800}.hint{color:#82919a;font-size:11px;margin:7px 0 0}.preview{background:#eef8f6;display:flex;align-items:center;justify-content:space-between;gap:10px;border-radius:14px;padding:16px;margin:17px 0 15px}.preview small,.total small{display:block;color:#57706f;font-size:12px;margin-bottom:6px}.preview strong{font-size:27px;color:#096e66;font-variant-numeric:tabular-nums}.preview>span{font-size:13px;color:#637a7b}.primary{background:#087e76;border:0;border-radius:13px;color:#fff;font-size:15px;font-weight:800;width:100%;padding:15px}.primary:active{transform:scale(.99)}.error{color:#b53b3b;font-size:13px}.notice{margin:13px 2px 0;padding:12px 15px;border-radius:12px;background:#fff0d8;color:#805500;font-size:13px}.clear{background:none;border:0;font-weight:700;color:#087e76;padding:4px 0}.total{background:#f0f6f6;border-radius:13px;padding:18px;display:flex;align-items:center;justify-content:space-between;margin-top:13px;gap:10px}.total strong{font-size:30px;font-variant-numeric:tabular-nums;color:#112c46}.total>span{color:#75858b;font-size:14px}.list{list-style:none;padding:0;margin:10px 0 0}.list li{display:flex;gap:9px;align-items:center;padding:13px 1px;border-bottom:1px solid #edf1f2}.name{flex:1;min-width:0}.name strong{display:block;overflow-wrap:anywhere}.name small{color:#778994;display:block;margin-top:4px}.cost{text-align:right;white-space:nowrap}.cost strong{display:block}.cost small{display:block;color:#758892;margin-top:3px}.remove{border:0;background:#f3f5f5;color:#526774;border-radius:10px;min-height:34px;min-width:34px;font-size:21px;margin-left:3px}.empty{text-align:center;padding:30px 9px 15px;color:#677985}.empty strong{display:block;color:#344c5a;margin:10px}.empty span{font-size:13px}.manual summary{font-weight:800;cursor:pointer}.manual p{color:#6a7f87;font-size:13px;line-height:1.5}.manual .two{grid-template-columns:1fr auto;align-items:end}.secondary{background:#d9f1ed;border:0;border-radius:12px;color:#096e66;padding:14px;font-weight:800}footer{font-size:12px;color:#74868f;line-height:1.6;padding:15px 5px}footer a{color:#087e76}
+[hidden]{display:none!important}@media(max-width:390px){.big-rate{font-size:27px}.panel{padding:17px}.preview strong,.total strong{font-size:24px}}
+</style>
+</head>
+<body>
+<main>
+<header class="brand">
+ <div class="logo" aria-hidden="true">₺<span>£</span></div>
+ <div><strong>Lira Pocket</strong><small>Shop in Türkiye, see prices in pounds</small></div>
+ <span id="network" class="network">Checking</span>
+</header>
+<section class="rate" aria-label="Exchange rate">
+ <div class="rate-top"><span>YOUR EXCHANGE RATE</span><span id="rateSource">Not loaded</span></div>
+ <div class="big-rate" id="rateValue">Loading…</div>
+ <p class="inverse" id="inverse">Fetching latest available published rate</p>
+ <div class="rate-bottom"><div class="rate-note" id="rateDetails">Rate saved automatically for offline use</div><button type="button" class="refresh" id="refresh">↻ Refresh</button></div>
+</section>
+<p id="notice" class="notice" role="status" hidden></p>
+<section class="panel">
+ <div class="head"><div><h1>Convert an item</h1><p class="sub">Enter the shelf price to see it in GBP</p></div><span class="tag">TRY → GBP</span></div>
+ <form id="addForm" novalidate>
+  <label for="name">Item name <small>(optional)</small></label><input id="name" maxlength="70" autocomplete="off" placeholder="e.g. Trainers, coffee, gifts">
+  <div class="two">
+    <div><label for="price">Price in Turkish lira</label><div class="prefix"><span>₺</span><input id="price" inputmode="decimal" autocomplete="off" placeholder="0.00" required></div></div>
+    <div><label for="qty">Quantity</label><div class="prefix"><span>×</span><input id="qty" type="number" min="1" max="999" step="1" value="1" required></div></div>
+  </div>
+  <p class="hint">Accepts 1,250.50 or 1.250,50</p>
+  <div class="preview"><div><small>Approximate price in GBP</small><strong id="preview">—</strong></div><span id="previewTry">₺0.00</span></div>
+  <p id="itemError" class="error" role="alert" hidden></p>
+  <button class="primary" type="submit">+ Add to shopping list</button>
+ </form>
+</section>
+<section class="panel">
+ <div class="head"><div><h2>Your shopping list</h2><p id="count" class="sub">0 items · saved on this device</p></div><button type="button" id="clear" class="clear">Clear all</button></div>
+ <div class="total"><div><small>Estimated shopping total</small><strong id="total">—</strong></div><span id="totalTry">₺0.00</span></div>
+ <ul id="items" class="list"></ul>
+ <div id="empty" class="empty">🛍️<strong>Your basket is empty</strong><span>Add items above to see your running total.</span></div>
+</section>
+<details class="panel manual"><summary>Offline or need a manual exchange rate?</summary>
+ <p>Your latest fetched rate stays saved on this device. If you have never been online, enter how many Turkish lira equal £1.</p>
+ <form id="manualForm" novalidate><label for="manual">Lira per £1</label><div class="two"><input id="manual" inputmode="decimal" placeholder="e.g. 55.00"><button type="submit" class="secondary">Use rate</button></div><p id="manualError" class="error" hidden></p></form>
+</details>
+<footer><p>Exchange rates supplied by <a href="https://frankfurter.dev/" rel="noopener noreferrer" target="_blank">Frankfurter</a>, normally updated daily. These are reference rates, not real-time card rates. Bank fees or exchange-rate differences may apply.</p><p>Your list and saved rate stay in this browser on your device. Open the app online once before expecting offline access.</p></footer>
+</main>
+<script>
+'use strict';
+(function(){
+var KEY='lira-pocket-v1',API='https://api.frankfurter.dev/v2/rate/try/gbp',INTERVAL=1800000;
+var $=function(id){return document.getElementById(id)};
+var money=new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP'});
+var fmt=new Intl.NumberFormat('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+var state={rate:null,items:[],checked:0},busy=false;
+function t(v){return '₺'+fmt.format(v)}
+function notify(s){$('notice').textContent=s;$('notice').hidden=!s}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({rate:state.rate,items:state.items}))}catch(e){notify('Storage is unavailable. Your shopping list might not persist.')}}
+function load(){try{var x=JSON.parse(localStorage.getItem(KEY)||'{}');if(x.rate&&Number.isFinite(x.rate.value)&&x.rate.value>0&&x.rate.value<10)state.rate=x.rate;if(Array.isArray(x.items))state.items=x.items.slice(0,500).filter(function(i){return i&&typeof i.name==='string'&&Number.isFinite(i.price)&&i.price>0&&Number.isInteger(i.qty)&&i.qty>0&&i.qty<=999}).map(function(i){return {id:String(i.id),name:i.name.slice(0,70),price:i.price,qty:i.qty}})}catch(e){}}
+function parse(v){var x=String(v).trim().replace(/\s/g,'').replace(/[₺£]/g,'');if(!x||!/^[0-9.,]+$/.test(x))return NaN;var c=x.lastIndexOf(','),d=x.lastIndexOf('.');if(c>=0&&d>=0){x=c>d?x.replace(/\./g,'').replace(',','.'):x.replace(/,/g,'')}else if(c>=0||d>=0){var q=x.split(c>=0?',':'.');if(q.some(function(s){return !s||!/^\d+$/.test(s)}))return NaN;var group=q.length===2&&q[1].length===3||q.length>2&&q.slice(1).every(function(s){return s.length===3});if(q.length>2&&!group)return NaN;x=group?q.join(''):q.join('.')}return Number(x)}
+function view(){
+var connected=navigator.onLine;$('network').textContent=connected?'● Online':'● Offline';$('network').className='network'+(connected?'':' offline');
+var r=state.rate;
+if(r){$('rateValue').textContent='₺1 = £'+r.value.toFixed(5);$('inverse').textContent='£1 = ₺'+fmt.format(1/r.value);$('rateSource').textContent=r.source==='Manual'?'MANUAL RATE':connected?'SAVED RATE':'OFFLINE RATE';$('rateDetails').textContent=r.source==='Manual'?'Entered manually · not a live rate':'Rate dated '+(r.date||'unknown')+' · saved for offline use'}
+else{$('rateValue').textContent='No rate saved';$('inverse').textContent='Connect online or enter a manual rate';$('rateSource').textContent='NOT AVAILABLE';$('rateDetails').textContent='A rate is needed for GBP conversion'}
+preview();basket()
+}
+function preview(){var p=parse($('price').value),q=Number($('qty').value),ok=Number.isFinite(p)&&p>0&&p<1e9&&Number.isInteger(q)&&q>0&&q<=999;var amount=ok?p*q:0;$('previewTry').textContent=t(amount);$('preview').textContent=ok&&state.rate?money.format(amount*state.rate.value):'—'}
+function basket(){var box=$('items');box.replaceChildren();var tr=0,count=0;state.items.forEach(function(i){tr+=i.price*i.qty;count+=i.qty;var li=document.createElement('li'),left=document.createElement('div'),right=document.createElement('div'),rm=document.createElement('button');left.className='name';right.className='cost';rm.className='remove';var title=document.createElement('strong');title.textContent=i.name;var detail=document.createElement('small');detail.textContent=i.qty+' × '+t(i.price);left.append(title,detail);var gb=document.createElement('strong');gb.textContent=state.rate?money.format(i.qty*i.price*state.rate.value):'—';var lt=document.createElement('small');lt.textContent=t(i.qty*i.price);right.append(gb,lt);rm.type='button';rm.textContent='×';rm.setAttribute('aria-label','Remove '+i.name);rm.addEventListener('click',function(){state.items=state.items.filter(function(x){return x.id!==i.id});save();basket()});li.append(left,right,rm);box.appendChild(li)});$('count').textContent=count+' '+(count===1?'item':'items')+' · saved on this device';$('total').textContent=state.rate?money.format(tr*state.rate.value):'—';$('totalTry').textContent=t(tr);$('empty').hidden=state.items.length>0;$('clear').disabled=!state.items.length}
+async function refresh(force){if(busy||!navigator.onLine)return;if(!force&&Date.now()-state.checked<INTERVAL)return;state.checked=Date.now();busy=true;$('refresh').disabled=true;var controller=new AbortController(),timer=setTimeout(function(){controller.abort()},12000);try{var res=await fetch(API,{cache:'no-store',signal:controller.signal});if(!res.ok)throw Error('HTTP '+res.status);var d=await res.json();if(String(d.base).toUpperCase()!=='TRY'||String(d.quote).toUpperCase()!=='GBP'||!Number.isFinite(d.rate)||d.rate<=0||d.rate>=10||!(/^\d{4}-\d{2}-\d{2}$/.test(d.date)))throw Error('Invalid rate');state.rate={value:d.rate,date:d.date,source:'Frankfurter'};save();notify('')}catch(e){notify(state.rate?'Rate update failed. Still using your saved exchange rate.':'Could not fetch a rate. Connect to the internet or enter one manually.')}finally{clearTimeout(timer);busy=false;$('refresh').disabled=false;view()}}
+$('addForm').addEventListener('submit',function(e){e.preventDefault();var p=parse($('price').value),q=Number($('qty').value);if(!(Number.isFinite(p)&&p>0&&p<1e9&&Number.isInteger(q)&&q>0&&q<=999)){$('itemError').textContent='Enter a valid price and quantity (1–999).';$('itemError').hidden=false;return}if(state.items.length>=500){$('itemError').textContent='Shopping list has reached 500 items.';$('itemError').hidden=false;return}$('itemError').hidden=true;state.items.unshift({id:String(Date.now())+'-'+Math.random(),name:$('name').value.trim().slice(0,70)||'Item '+(state.items.length+1),price:p,qty:q});save();$('name').value='';$('price').value='';$('qty').value='1';view();$('price').focus()});
+$('manualForm').addEventListener('submit',function(e){e.preventDefault();var x=parse($('manual').value);if(!Number.isFinite(x)||x<=0||x>=1000000){$('manualError').textContent='Enter a valid amount of Turkish lira per £1.';$('manualError').hidden=false;return}$('manualError').hidden=true;state.rate={value:1/x,date:'',source:'Manual'};save();notify('');view();$('manualForm').closest('details').open=false});
+$('price').addEventListener('input',preview);$('qty').addEventListener('input',preview);
+$('refresh').addEventListener('click',function(){if(navigator.onLine)refresh(true);else notify('Offline: using your saved rate until you reconnect.')});
+$('clear').addEventListener('click',function(){if(state.items.length&&confirm('Remove every item from your shopping list?')){state.items=[];save();basket()}});
+window.addEventListener('online',function(){view();refresh(true)});
+window.addEventListener('offline',function(){view();notify('Offline: shopping works with your last saved rate.')});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh(false)});
+setInterval(function(){if(!document.hidden)refresh(false)},INTERVAL);
+load();view();refresh(true);
+if('serviceWorker' in navigator&&location.protocol==='https:')window.addEventListener('load',function(){navigator.serviceWorker.register('./service-worker.js').catch(function(){})});
+})();
+</script>
+</body></html>
