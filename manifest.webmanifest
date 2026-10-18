@@ -1,0 +1,19 @@
+{
+  "name": "Lira Pocket — TRY to GBP",
+  "short_name": "Lira Pocket",
+  "description": "Offline TRY to GBP shopping list and price converter",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f2f6f6",
+  "theme_color": "#112c46",
+  "lang": "en-GB",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
